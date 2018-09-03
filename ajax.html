@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		ajax:async javascript and xml 异步的js和xml
+		作用：可以通过前端页面向后端服务器发起http请求，并得到请求的结果
+		//1.ajax是一个js中的内置对象，它是通过 XMLHttpRequest构造函数创建出来的实例对象
+
+		<script type="text/javascript">
+			//1.创建一个ajax的实例对象
+			var xhr = new XMLHttpRequest();
+			//xhr就是一个ajax的实例对象
+			console.log(xhr);
+			//2.第二步：需要声明向谁发请求，请求什么数据，以何种形式请求，是同步的方式，还是异步的方式
+			//2.第二步：配置请求的基本信息,使用open()方法
+			          //参数1:请求方式(GET,POST,PUT,DELETE,HEAD...)
+			          //参数2：请求的地址 （./abc/abc.txt）
+			          //参数3:true(代表异步),false(代表同步)
+			   xhr.open("GET","./abc.txt",false)
+			  //3.监听请求的过程 : onreadystatechange事件：当请求（及准备）状态发生改变时会触发的事件
+			     // on当..时候 ready准备state状态 change改变时
+			  xhr.onreadystatechange = function(){
+			  	  //ajax请求的状态：使用 readyState 属性来表示
+			  	  //xhr.readyState 可能会有的值是： 0 1 2 3 4
+			  	  //0 ：代表ajax状态为初始化，ajax实例才刚创建
+			  	  //1：代表open()配置请求的基本信息已完成
+			  	  //2：代表的ajax请求已发送
+			  	  //3：代表服务器已接收
+			  	  //4： 代表前端已得到结果（请求完成）
+			  	  console.log(xhr.readyState) //4
+			  	 //http的网络状态码：使用status属性来表示
+			  	  console.log(xhr.status) //200代表 http状态 是成功的 
+			  }
+			 //4.发送请求，使用send()方法
+			 xhr.send()
+		</script>
+		   
+		
+	</body>
+</html>

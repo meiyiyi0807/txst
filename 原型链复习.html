@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			var person = {
+				name:"小明",
+				age:18,
+				info:function(){
+					//to do 200行
+				},
+				animate:function(){
+					//to do 200行
+				},
+				method:function(){
+					//to do..200行
+				}
+			}
+			
+			//批量的生产对象
+			function Person(name,age){
+				//var obj = {}
+				this.name = name;
+				this.age = age;
+				this.info = function(){
+					console.log("a")
+				}
+				//return obj
+			}
+			//把方法提取成公有的方法,使用原型对象
+			Person.prototype.info = function(){
+				console.log("b")
+			}
+			var p1 = new Person("小明",18);
+			var p2 = new Person("小美",20);
+			console.log(p1,p2)
+			p1.info();
+			//原型链：就是当实例对象在访问一个成员属性或方法时，如果私有中有这个（方法）就直截使用
+			//(不管原型上有没有这个方法),如果私有中,没有这个方法,会自动的通过__proto__在原型上查找
+		</script>
+	</body>
+</html>
